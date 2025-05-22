@@ -1,0 +1,157 @@
+/* Reset */
+body, h1, h2, h3, p, ul, li, form, input, select{
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;;
+    margin-right: 50px; ;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: rgb(189, 138, 202);
+    color: #222;
+    padding: 50px 0;
+}
+
+/* Header */
+h1 {
+    font-family:cursive; 
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    padding: 50px;
+}
+
+h2 {
+    color: #420b5c;
+    margin-bottom: 10px;
+}
+
+/* Container for products */
+.produits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Product card */
+.produit {
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    padding: 18px 20px 16px 20px;
+    width: 270px;
+    transition: box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.produit:hover {
+    box-shadow: 0 4px 16px rgba(41, 128, 185, 0.18);
+}
+
+.produit img {
+    max-width: 150px;
+    max-height: 180px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(44, 62, 80, 0.10);
+}
+
+.produit h3 {
+    font-size: 1.2em;
+    margin-bottom: 6px;
+    color: #34495e;
+    text-align: center;
+}
+
+.produit p {
+    font-size: 0.98em;
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+.produit strong {
+    color: #800b86;
+}
+
+.produit a {
+    color: #6b1271;
+    text-decoration: none;
+    font-size: 0.97em;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 7px;
+    transition: color 0.2s;
+}
+
+.produit a:hover {
+    color: #de5fb1;
+    text-decoration: underline;
+}
+
+/* Formulaire */
+form {
+    margin: 18px auto 0 auto;
+    text-align: center;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], select {
+    padding: 7px 10px;
+    border: 1px solid #bfc9d1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    width: 85%;
+    max-width: 250px;
+    background: #f9f9f9;
+    transition: border 0.2s;
+}
+
+input[type="number"] {
+    width: 55px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+button, input[type="submit"] {
+    background: #6a016c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 18px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 5px;
+}
+
+button:hover, input[type="submit"]:hover {
+    background: #9f1979d8;
+}
+
+
+p[style*="color:red"], p[style*="color: green;"] {
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .produits {
+        flex-direction: column;
+        align-items: center;
+    }
+    .produit {
+        width: 95%;
+    }
+}
+
+

@@ -1,0 +1,34 @@
+/site-ecommerce/
+
+├── index.php                   → صفحة accueil (عرض المنتجات)
+├── login.php                  → صفحة تسجيل الدخول
+├── register.php               → صفحة التسجيل
+├── logout.php                 → لتسجيل الخروج
+│
+├── panier.php                 → صفحة السلة
+├── commande.php              → صفحة إتمام الطلب
+├── historique_commandes.php  → لعرض الطلبات السابقة (للمستخدم)
+│
+├── admin/
+│   ├── index.php             → لوحة التحكم الرئيسية
+│   ├── produits.php          → إدارة المنتجات
+│   ├── clients.php           → إدارة العملاء
+│   └── commandes.php         → عرض جميع الطلبات
+│
+├── includes/
+│   ├── db.php                → الاتصال بقاعدة البيانات
+│   ├── header.php            → رأس الصفحة (مكرر)
+│   ├── footer.php            → أسفل الصفحة
+│   ├── fonctions.php         → وظائف مشتركة
+│   └── auth.php              → حماية الصفحات وتحقق من role
+│
+├── assets/
+│   ├── css/
+│   │   └── style.css         → التنسيق العام للموقع
+│   ├── js/
+│   │   └── script.js         → ملفات جافاسكريبت إن وجدت
+│   └── images/
+│       └── ...               → صور المنتجات أو الأيقونات
+│
+└── uploads/
+    └── produits/             → تخزين صور المنتجات
