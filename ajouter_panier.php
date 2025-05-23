@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
                                       FROM panier 
                                       WHERE user_id=$user_id AND produit_id=$produit_id");
 
-    if (mysqli_num_rows($check_panier)>0) {
+    if(mysqli_num_rows($check_panier)>0) {
      // produit existe alors:
         $row=mysqli_fetch_assoc($check_panier);
         $new_qt=$row['quantite']+$quantite;

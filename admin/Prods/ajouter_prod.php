@@ -56,29 +56,29 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST" enctype="multipart/form-data">
-        <label>Nom :</label><br>
+        Nom :<br>
         <input type="text" name="nom" required><br><br>
 
-        <label>Description :</label><br>
+        Description :<br>
         <textarea name="description" required></textarea><br><br>
 
-        <label>Prix :</label><br>
-        <input type="number" step="0.01" name="prix" required><br><br>
+        Prix :<br>
+        <input type="number" step="0.00" name="prix" style="width:60px" required ><br><br>
 
-        <label>Stock :</label><br>
-        <input type="number" name="stock" required><br><br>
+        Stock :<br>
+        <input type="number" name="stock" style="width:60px" required><br><br>
 
-        <label>Catégorie :</label><br>
+        Catégorie :<br>
         <select name="categorie_id" required>
             <option value="">-- Choisir une catégorie --</option>
             
-            <?php while ($cat = mysqli_fetch_assoc($res_categ)): ?>
+            <?php while ($cat=mysqli_fetch_assoc($res_categ)): ?>
                 <option value="<?= $cat['id'] ?>"><?= htmlspecialchars($cat['nom']) ?></option>
             <?php endwhile; ?>
 
         </select><br><br>
 
-        <label>Image :</label><br>
+        Ajouter l'Image :<br><br>
         <input type="file" name="image"><br><br>
 
         <button type="submit">Ajouter</button>

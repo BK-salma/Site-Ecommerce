@@ -14,12 +14,11 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['commande_id'], $_POST['s
 }
 
 
-$query = "
-    SELECT c.*, u.nom AS client
-    FROM commandes c
-    JOIN users u ON c.user_id = u.id
-    ORDER BY c.date_commande DESC
-";
+$query="SELECT c.*, u.nom AS client
+        FROM commandes c
+        JOIN users u ON c.user_id = u.id
+        ORDER BY c.date_commande DESC ";
+
 $commandes = mysqli_query($conn, $query);
 ?>
 

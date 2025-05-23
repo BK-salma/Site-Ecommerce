@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 $query="SELECT p.*, c.nom AS categorie 
         FROM produits p 
-        LEFT JOIN categories c 
+        JOIN categories c 
         ON p.categorie_id = c.id";
 
 $result =mysqli_query($conn, $query);
@@ -24,10 +24,10 @@ $result =mysqli_query($conn, $query);
 </head>
 <body>
     <h1>Gestion des produits</h1>
-    <p><a href="index.php">Retour</a></p>
+    <p><a href="index.php">Retour</a></p><br>
     <p><a href="Prods/ajouter_prod.php">Ajouter un produit</a></p>
 <br>
-    <table border="1" cellpadding="10" cellspacing="0" ">
+    <table border="1" cellpadding="20" cellspacing="6" ">
         <tr>
             <th>ID</th>
             <th>Nom</th>
@@ -38,7 +38,7 @@ $result =mysqli_query($conn, $query);
             <th>Actions</th>
         </tr>
 
-        <?php while ($produit = mysqli_fetch_assoc($result)) : ?>
+        <?php while ($produit=mysqli_fetch_assoc($result)) : ?>
             <tr>
                 <td><?=$produit['id'] ?></td>
                 <td><?=htmlspecialchars($produit['nom'])?></td>
@@ -47,7 +47,7 @@ $result =mysqli_query($conn, $query);
                 <td><?=$produit['stock'] ?></td>
                 <td>
                     <?php if(!empty($produit['image'])): ?>
-                        <img src="../uploads/produits/<?= $produit['image']?>" width="50">
+                        <img src="../uploads/produits/<?= $produit['image']?>" width="150">
                     <?php endif; ?>
                 </td>
                 <td>

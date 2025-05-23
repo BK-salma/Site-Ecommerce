@@ -7,8 +7,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
-$q= "SELECT * FROM users 
-     ORDER BY role DESC, nom ASC";
+$q= "SELECT * FROM users ";
 
 $result=mysqli_query($conn,$q);
 ?>
@@ -21,10 +20,10 @@ $result=mysqli_query($conn,$q);
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-    <h1>Gestion des utilisateurs</h1>
-    <p><a href="index.php">Retour </a></p>
+    <h1>Gestion des Clients</h1>
+    <p><a href="index.php"> Retour </a></p>
     <br>
-    <table border="1" cellpadding="10" cellspacing="0">
+<table border="1" cellpadding="10" cellspacing="0">
         <tr>
             <th>ID</th>
             <th>Nom</th>
@@ -33,25 +32,25 @@ $result=mysqli_query($conn,$q);
             <th>---</th>
         </tr>
 
-        <?php while($user=mysqli_fetch_assoc($result)): ?>
-            <tr>
-                <td><?= $user['id'] ?></td>
-                <td><?= htmlspecialchars($user['nom']) ?></td>
-                <td><?= htmlspecialchars($user['email']) ?></td>
-                <td><?= $user['role'] ?></td>
-                <td>
-                    <?php if($user['role']!=='admin'): ?>
-                        <a href="Clients/supprimer_clt.php? id= <?= $user['id'] ?>" 
-                        onclick="return confirm('Confirmer la suppression ?')"> Supprimer</a>
+    <?php while($user=mysqli_fetch_assoc($result)): ?>
+        <tr>
+            <td><?= $user['id'] ?></td>
+            <td><?= htmlspecialchars($user['nom']) ?></td>
+            <td><?= htmlspecialchars($user['email']) ?></td>
+            <td><?= $user['role'] ?></td>
+            <td>
+                <?php if($user['role']!=='admin'): ?>
+                    <a href="Clients/supprimer_clt.php? id=<?=$user['id'] ?>" 
+                       onclick="return confirm('Confirmer la suppression ?')"> Supprimer</a>
 
-                        <a href="Clients/modifier_clt.php? id= <?= $user['id'] ?> "> Modifier </a>
-                    <?php else: ?>
-                        IMPOSSIPLE DE MODIFIER 
-                    <?php endif; ?>
-                </td>
-            </tr>
+                    <a href="Clients/modifier_clt.php? id=<?= $user['id'] ?> "> Modifier </a>
+                <?php else: ?>
+                    IMPOSSIPLE DE MODIFIER                     
+                <?php endif; ?>
+            </td>
+        </tr>
+    <?php endwhile; ?>
+</table>
 
-        <?php endwhile; ?>
-    </table>
 </body>
 </html>

@@ -10,8 +10,8 @@ body, h1, h2, h3, p, ul, li, form, input, select{
 /* Body */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: rgb(189, 138, 202);
-    color: #222;
+    background-color: rgb(189, 145, 189);
+    color: #070000;
     padding: 50px 0;
 }
 

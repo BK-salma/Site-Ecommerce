@@ -16,28 +16,28 @@ if (!isset($_GET['id'])) {
 $id =$_GET['id'];
 $message='';
 
-$result = mysqli_query($conn, "SELECT * FROM produits WHERE id = $id");
-$produit = mysqli_fetch_assoc($result);
+$result=mysqli_query($conn, "SELECT * FROM produits WHERE id = $id");
+$produit=mysqli_fetch_assoc($result);
 
 $categories= mysqli_query($conn, "SELECT * FROM categories");
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = mysqli_real_escape_string($conn, $_POST['nom']);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
-    $prix =$_POST['prix'];
-    $stock = $_POST['stock'];
-    $categorie_id =$_POST['categorie_id'];
-    $image_name = $produit['image']; 
+    $nom=mysqli_real_escape_string($conn, $_POST['nom']);
+    $description= mysqli_real_escape_string($conn, $_POST['description']);
+    $prix= $_POST['prix'];
+    $stock= $_POST['stock'];
+    $categorie_id= $_POST['categorie_id'];
+    $image_name= $produit['image']; 
     
     //verifier si l'image existe 
     if(!empty($_FILES['image']['name'])){
         $image_name= basename($_FILES['image']['name']);
         $chemin_direct= "../../uploads/produits/";
-        $chemin_fichier= $chemin_direct . $image_name;
-        move_uploaded_file($_FILES['image']['tmp_name'], $chemin_fichier);
+        $chemin_fichier= $chemin_direct.$image_name;
+        move_uploaded_file($_FILES['image']['tmp_name'],$chemin_fichier);
     }
 
-    $modifier = "UPDATE produits
+    $modifier= " UPDATE produits
                  SET nom='$nom', description='$description', prix=$prix, stock=$stock, 
                      categorie_id=$categorie_id, image='$image_name' 
                  WHERE id='$id'";
@@ -68,29 +68,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST" enctype="multipart/form-data">
-        <label>Nom :</label><br>
+        Nom :<br>
         <input type="text" name="nom" value="<?= htmlspecialchars($produit['nom']) ?>" required><br><br>
 
-        <label>Description :</label><br>
+        Description :<br>
         <textarea name="description" required><?= htmlspecialchars($produit['description']) ?></textarea><br><br>
 
-        <label>Prix :</label><br>
+        Prix :<br>
         <input type="number" step="0.01" name="prix" value="<?= $produit['prix'] ?>" required><br><br>
 
-        <label>Stock :</label><br>
+        Stock :<br>
         <input type="number" name="stock" value="<?= $produit['stock'] ?>" required><br><br>
 
-        <label>Catégorie :</label><br>
+        Catégorie :<br>
         <select name="categorie_id" required>
-            <?php while ($cat = mysqli_fetch_assoc($categories)): ?>
-                <option value="<?= $cat['id'] ?>" <?= ($cat['id'] == $produit['categorie_id']) ? 'selected' : '' ?> >
+            <?php while ($cat=mysqli_fetch_assoc($categories)): ?>
+                <option value="<?= $cat['id'] ?>"> 
                     <?= htmlspecialchars($cat['nom']) ?>
                 </option>
             <?php endwhile; ?>
         </select><br><br>
 
-        <label>Changer l'image :</label><br>
-        <label>Image actuelle:</label><br>
+        Changer l'image :<br>
+        Image actuelle:<br>
+
         <?php if (!empty($produit['image'])): ?>
             <img src="../../uploads/produits/<?= $produit['image'] ?>" width="100"><br>
         <?php endif; ?>

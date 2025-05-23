@@ -18,23 +18,21 @@ $message = '';
 $result= mysqli_query($conn, "SELECT * FROM users WHERE id = $id");
 $user= mysqli_fetch_assoc($result);
 
-if(!$user){
-    header('Location: ../clients.php');
-    exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nom= $_POST['nom'];
     $email= $_POST['email'];
 
-    $modif = "UPDATE users SET nom='$nom', email='$email' WHERE id=$id";
+    $modif= "UPDATE users 
+              SET nom='$nom', email='$email' 
+              WHERE id=$id";
 
     if (mysqli_query($conn, $modif)) {
         $message = "Utilisateur modifié avec succès.";
-        $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM users WHERE id = $id"));
+        $r=mysqli_query($conn, "SELECT * FROM users WHERE id = $id");
+        $user=mysqli_fetch_assoc($r);
     } else {
-        $message = "Erreur lors de la modification.";
+        $message="Erreur lors de la modification.";
     }
 }
 ?>
@@ -50,13 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Modifier un utilisateur</h1>
     <p><a href="../clients.php">Retour à la liste des clients</a></p>
 
-    <?php if ($message): ?>
+    <?php if($message): ?>
         <p style="color: green;"><?= htmlspecialchars($message) ?></p>
     <?php endif; ?>
 
     <form method="POST">
         Nom :<br>
-        <input type="text" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required><br><br>
+        <input type="text" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required>
+        <br><br>
 
         Email :<br>
         <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required><br><br>

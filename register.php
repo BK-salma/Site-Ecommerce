@@ -29,10 +29,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $message="Erreur lors de la création du compte.";
                 }
             }else{
-                $message ="Email déjà utilisé.";
+                $message="Email déjà utilisé.";
             }
         }else{
-            $message= "Les mots de passe ne correspondent pas.";
+            $message="Les mots de passe ne correspondent pas.";
         }
     } 
 }
@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php if($message): ?>
         <p style="color:red; font-size: 18px;"><?= htmlspecialchars($message) ?></p>
-    <?php endif; ?>
+        <?php endif; ?>
 
     <form method="POST" action="">
         <label>Nom :</label><br>
@@ -68,7 +68,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">S'inscrire</button>
     </form>
     
-    <p style="text-align: center; color:black; font-size: 18px;">Deja un compte? <a href="login.php">Se connecter</a> </p>
+    <p style="text-align: center; color:black; font-size: 18px;">
+        Deja un compte? <a href="login.php">Se connecter</a> </p>
 
 
 </body>

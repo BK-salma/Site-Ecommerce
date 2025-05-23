@@ -74,7 +74,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         </tr>
         <?php $total = 0; ?>
         <?php foreach ($panier as $item): ?>
-            <?php $sous_total = $item['prix'] * $item['quantite']; ?>
+            <?php $sous_total=$item['prix']*$item['quantite']; ?>
             <tr>
                 <td><?= htmlspecialchars($item['nom']) ?></td>
                 <td><?= number_format($item['prix'], 2) ?> DH</td>

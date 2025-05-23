@@ -28,13 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             exit;
         } else {
-            $message = "Mot de passe incorrect";
+            $message="Mot de passe incorrect";
         }
     } else {
-        $message = "Email introuvable";
+        $message="Email introuvable";
     }
 }else{
-    $message = "Veuillez remplir tous les champs";
+    $message="Veuillez remplir tous les champs";
 }
 }
 
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php if($message): ?>
         <p style="color:red;"><?= htmlspecialchars($message) ?></p>
-    <?php endif; ?>
+        <?php endif; ?>
 
     <form method="POST" action="login.php">
         <label for="email">Email :</label><br>
